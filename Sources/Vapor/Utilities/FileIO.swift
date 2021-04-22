@@ -221,7 +221,7 @@ extension NonBlockingFileIO: ServiceType {
 extension BlockingIOThreadPool: ServiceType {
     /// See `ServiceType`.
     public static func makeService(for worker: Container) throws -> BlockingIOThreadPool {
-        let pool = BlockingIOThreadPool(numberOfThreads: 2)
+        let pool = BlockingIOThreadPool(numberOfThreads: ProcessInfo.processInfo.processorCount)
         pool.start()
         return pool
     }
